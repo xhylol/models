@@ -181,17 +181,19 @@ def define_yl_flags():
                          fp16_implementation=True)
   flags.adopt_module_key_flags(resnet_run_loop)
   flags_core.set_defaults(data_dir='/data/resnet_data/',
-                          model_dir='/root/model_dir',
+                          model_dir='/data/resnet_model/model_dir',
                           train_epochs=90,
                           epochs_between_evals=1,
                           batch_size=128,
                           resnet_size='50',
                           image_bytes_as_serving_input=False,
                           fine_tune=True,
-                          pretrained_model_checkpoint_path="/root/tensorflow/resnet_imagenet_v2_20180928",
+                          pretrained_model_checkpoint_path="/data/resnet_model/tensorflow/resnet_imagenet_v2_20180928",
                           data_format='channels_last',
                           resnet_version='2',
-                          export_dir='/root/model_dir/final_export')
+                          export_dir='/data/resnet_model/model_dir/final_export',
+                          max_train_steps=220000,
+                          use_train_and_evaluate=True)
 
 
 def run_yl(flags_obj):
