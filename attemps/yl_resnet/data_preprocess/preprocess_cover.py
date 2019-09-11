@@ -20,9 +20,6 @@ fh.setFormatter(formatter)
 logger.addHandler(fh)
 
 Image.MAX_IMAGE_PIXELS = 1000000000
-HEIGHT = 480
-WIDTH = 270
-NUM_CHANNELS = 3
 
 def serialize_example_pyfunction(cate, img, shape):
     feature = {
