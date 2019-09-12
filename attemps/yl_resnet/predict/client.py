@@ -98,7 +98,8 @@ def do_inference(hostport,data_queue,write_queue):
                 write_queue.put('{}:{}\n'.format(videoids[i],','.join([str(x) for x in res[i*128:(i+1)*128]])))
             logger.info("put {} elements to the shared queue.".format(len(videoids)))
 
-    while True:
+    running = True
+    while running:
         videoids = []
         inputs = []
         for i in range(100):
@@ -107,6 +108,7 @@ def do_inference(hostport,data_queue,write_queue):
             except:
                 continue
             if data == 'kill':
+                running = False
                 break
             videoids.append(data[0])
             inputs.append(data[1])
